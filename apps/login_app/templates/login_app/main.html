@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Success Page</title>
+</head>
+<body>
+    <h1>Hello, {{user.name}} !</h1>
+    <a href="/logout">Logout</a>
+    
+
+    <h3>Your Wish List:</h3>
+    <table>
+            <th>Item</th>
+            <th>Added by</th>
+            <th>Date Added</th>
+            <th>Action</th>
+        
+        {% for item in my_items %}
+            <tr>
+                <td><a href="/wish_items/{{item.id}}">{{item.label}}</a></td>
+                <td>{{item.uploader.name}}</td>
+                
+                <td>{{item.created_at}}</td>
+                <td>{% if item.uploader.id == request.session.user_id %} 
+                    <a href="delete/{{item.id}}">Delete</a>{% endif %} 
+                    <!-- <a href="/addwish/{{record.id}}">addwish</a> -->
+                    <!-- <a href="/edit/{{record.id}}">Edit</a> -->
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    
+    
+    
+    <br><br><br>
+    <h3>Other User's Wish List (All)</h3>
+    <table>
+        <th>Item</th>
+        <th>Added by</th>
+        <th>Date Added</th>
+        <th>Action</th>
+    
+    {% for item in items %}
+        <tr>
+            <td>{{item.label}}</td>
+            <td>{{item.uploader.name}}</td>
+            <td>{{item.created_at}}</td>
+            <td><a href="/add/{{item.id}}">Add to my wishlist</a> 
+                </td>
+        </tr>
+    {% endfor %}
+    </table>
+
+
+    <br><br>
+    <a href="/wish_items/create">Add Item</a>
+
+    
+    
+</body>
+</html>

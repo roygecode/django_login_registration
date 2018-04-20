@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Edit</title>
+</head>
+<body>
+    <h3>Edit Record #{{record.id}}</h3>
+    
+    <form action="/edit/{{record.id}}/confirm" method="post">
+        {% csrf_token %}
+        Artist <input type="text" name = "artist" value = "{{record.artist}}"> 
+        Album  <input type="text" name = "album" value = "{{record.album}}">
+        Label  <input type="text" name = "label" value = "{{record.label}}">
+        <input type="submit" value = "Edit">
+    </form>
+    
+</body>
+</html>

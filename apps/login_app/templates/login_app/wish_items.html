@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Users who added to their wish list</title>
+</head>
+<body>
+        <!-- {% for record in records %}
+        <h1>{{record.artist}}</h1>
+        {% endfor %} -->
+        <!-- <table>
+            <th>Item</th>
+            <th>Added by</th>
+            <th>Date Added</th> -->
+            <a href="/main">Home</a>
+
+            <br><br>
+            
+            <a href="/logout">Logout</a>
+            <p>Users who added this product/item under their wish list:</p>
+            
+            {% for item in items %}
+            
+            <h1>{{item.uploader.name}}</h1>
+
+            
+            
+            {% if item.uploader.id == request.session.user_id %}
+            {{record.album}}
+            {% endif %}
+        
+            {% endfor %}
+        </table> 
+    
+</body>
+</html>
